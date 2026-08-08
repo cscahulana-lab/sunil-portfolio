@@ -1202,169 +1202,509 @@ footer span {
    18. DARK MODE
    ========================================================= */
 
+/* =========================================================
+   PREMIUM DARK MODE — ROYAL NIGHT
+   ========================================================= */
+
 body.dark-mode {
-    --cream: #1b1410;
-    --cream-light: #241a14;
+    --primary: #ff9800;
+    --primary-dark: #ff6d00;
+    --secondary: #ffd54f;
+    --gold: #ffc107;
 
-    --brown: #fff3e0;
-    --brown-light: #d7ccc8;
+    --cream: #0d1117;
+    --cream-light: #151a21;
 
-    --text: #fff3e0;
+    --brown: #f5f5f5;
+    --brown-light: #b8c0cc;
 
-    background:
-        linear-gradient(
-            135deg,
-            #1b1410,
-            #2b1b10
-        );
+    --text: #f5f5f5;
+    --muted: #aeb6c2;
 
-    color: var(--text);
+    background: #0d1117;
+    color: #f5f5f5;
 }
+
+
+/* ---------- Background glow ---------- */
+
+body.dark-mode::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 152, 0, 0.14),
+            transparent 70%
+        );
+}
+
+body.dark-mode::after {
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 193, 7, 0.08),
+            transparent 70%
+        );
+}
+
+
+/* ---------- Navbar ---------- */
 
 body.dark-mode header {
     background:
         linear-gradient(
             135deg,
-            #2b1608,
-            #5d2e0b,
-            #8d4e0c
+            #11151b,
+            #171c23
+        );
+
+    border-bottom:
+        1px solid rgba(255, 152, 0, 0.45);
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .logo {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px rgba(255, 152, 0, 0.35);
+}
+
+body.dark-mode nav ul li a {
+    color: #e8edf3;
+}
+
+body.dark-mode nav ul li a:hover,
+body.dark-mode nav ul li a.active {
+    color: #ffb300;
+}
+
+body.dark-mode nav ul li a::after {
+    background:
+        linear-gradient(
+            to right,
+            #ff6d00,
+            #ffd54f
         );
 }
+
+
+/* ---------- Theme button ---------- */
+
+body.dark-mode #theme-toggle {
+    background:
+        #111820;
+
+    color:
+        #ffd54f;
+
+    border:
+        1px solid #ff9800;
+
+    box-shadow:
+        0 0 12px rgba(255, 152, 0, 0.15);
+}
+
+body.dark-mode #theme-toggle:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #ff6d00,
+            #ff9800
+        );
+
+    color: white;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 body.dark-mode #home {
     background:
         radial-gradient(
             circle at 80% 30%,
-            rgba(255, 143, 0, 0.2),
-            transparent 35%
+            rgba(255, 152, 0, 0.14),
+            transparent 30%
         ),
-        linear-gradient(
-            135deg,
-            #1b1410,
-            #2b1b10
-        );
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 193, 7, 0.06),
+            transparent 28%
+        ),
+        #0d1117;
 }
 
-body.dark-mode #about,
-body.dark-mode #projects {
-    background:
-        linear-gradient(
-            180deg,
-            #1b1410,
-            #241a14
-        );
+body.dark-mode #home h1 {
+    color: #ffffff;
 
-    color: #fff3e0;
+    text-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.5);
 }
 
-body.dark-mode #skills,
-body.dark-mode #contact {
+body.dark-mode #home h2 {
+    color:
+        #ff9800;
+
+    text-shadow:
+        0 0 15px rgba(255, 152, 0, 0.15);
+}
+
+body.dark-mode .hero-small-text,
+body.dark-mode .hero-description {
+    color:
+        #b8c0cc;
+}
+
+body.dark-mode .hero-image img {
+    border-color:
+        #161b22;
+
+    outline-color:
+        #ff9800;
+
+    box-shadow:
+        0 0 0 5px rgba(255, 152, 0, 0.12),
+        0 15px 40px rgba(0, 0, 0, 0.65),
+        0 0 25px rgba(255, 152, 0, 0.18);
+}
+
+
+/* ---------- Hero buttons ---------- */
+
+body.dark-mode .hero-buttons a {
     background:
         linear-gradient(
             135deg,
-            #241a14,
-            #302015
+            #ff6d00,
+            #ff9800
         );
+
+    box-shadow:
+        0 6px 18px rgba(255, 109, 0, 0.25);
+}
+
+body.dark-mode .hero-buttons a:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ffc107
+        );
+
+    color:
+        #151515;
+
+    box-shadow:
+        0 10px 28px rgba(255, 152, 0, 0.35);
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+body.dark-mode #about {
+    background:
+        #10151c;
 }
 
 body.dark-mode #about h2,
 body.dark-mode #skills h2,
 body.dark-mode #projects h2,
-body.dark-mode #contact h2,
-body.dark-mode #home h1,
-body.dark-mode .project-card h3 {
-    color: #fff3e0;
+body.dark-mode #contact h2 {
+    color:
+        #ffffff;
 }
 
 body.dark-mode #about p {
-    background: #2a1c15;
+    background:
+        #171d25;
 
-    color: #d7ccc8;
+    color:
+        #b8c0cc;
 
-    border-color: #ff8f00;
+    border-left:
+        4px solid #ff9800;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
+body.dark-mode #skills {
+    background:
+        #0d1117;
 }
 
 body.dark-mode .skills-container {
     background:
-        rgba(42, 28, 21, 0.9);
+        #151b23;
 
-    border-color:
-        rgba(255, 213, 79, 0.3);
+    border:
+        1px solid rgba(255, 152, 0, 0.4);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.4);
 }
 
 body.dark-mode .skill-info {
-    color: #fff3e0;
+    color:
+        #f5f5f5;
 }
 
 body.dark-mode .skill-bar {
-    background: #4a3a31;
+    background:
+        #2a313b;
+}
+
+body.dark-mode .skill-progress {
+    background:
+        linear-gradient(
+            to right,
+            #ff6d00,
+            #ff9800,
+            #ffd54f
+        );
+
+    box-shadow:
+        0 0 12px rgba(255, 152, 0, 0.3);
+}
+
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+body.dark-mode #projects {
+    background:
+        #10151c;
 }
 
 body.dark-mode .project-card {
     background:
         linear-gradient(
             145deg,
-            #2a1c15,
-            #211711
+            #171d25,
+            #12171e
         );
 
-    border-color: #5d4037;
+    border:
+        1px solid rgba(255, 152, 0, 0.35);
 
-    color: #fff3e0;
+    color:
+        #f5f5f5;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .project-card::before {
+    background:
+        linear-gradient(
+            to right,
+            #ff6d00,
+            #ff9800,
+            #ffd54f
+        );
+}
+
+body.dark-mode .project-card h3 {
+    color:
+        #ffffff;
 }
 
 body.dark-mode .project-card p {
-    color: #d7ccc8;
+    color:
+        #aeb6c2;
+}
+
+body.dark-mode .project-card:hover {
+    transform:
+        translateY(-10px);
+
+    border-color:
+        #ff9800;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.55),
+        0 0 20px rgba(255, 152, 0, 0.12);
+}
+
+body.dark-mode .project-tech span {
+    background:
+        #252d38;
+
+    color:
+        #e8edf3;
+
+    border:
+        1px solid #3a4450;
+}
+
+body.dark-mode .project-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #ff6d00,
+            #ff9800
+        );
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 5px 15px rgba(255, 109, 0, 0.2);
+}
+
+body.dark-mode .project-btn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #ff9800,
+            #ffc107
+        );
+
+    color:
+        #111111;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+body.dark-mode #contact {
+    background:
+        #0d1117;
 }
 
 body.dark-mode #contact-form {
     background:
-        rgba(42, 28, 21, 0.95);
+        #151b23;
 
-    border-color: #5d4037;
+    border:
+        1px solid rgba(255, 152, 0, 0.35);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
 }
 
 body.dark-mode .form-group label {
-    color: #fff3e0;
+    color:
+        #f5f5f5;
 }
 
 body.dark-mode .form-group input,
 body.dark-mode .form-group textarea {
-    background: #1b1410;
+    background:
+        #0f141a;
 
-    color: #fff3e0;
+    color:
+        #f5f5f5;
 
-    border-color: #5d4037;
+    border:
+        1px solid #39424e;
+}
+
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color:
+        #737d89;
 }
 
 body.dark-mode .form-group input:focus,
 body.dark-mode .form-group textarea:focus {
-    border-color: #ff8f00;
+    border-color:
+        #ff9800;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 152, 0, 0.1);
 }
 
-body.dark-mode #theme-toggle {
-    background: #2b1b10;
-
-    color: #fff3e0;
-
-    border-color: #ffca28;
-}
-
-body.dark-mode #theme-toggle:hover {
-    background: #ff8f00;
-
-    color: white;
-}
-
-body.dark-mode footer {
+body.dark-mode #contact-form button {
     background:
         linear-gradient(
             135deg,
-            #120d0a,
-            #24150e
+            #ff6d00,
+            #ff9800
         );
 }
 
+
+/* =========================================================
+   CONTACT LINKS
+   ========================================================= */
+
+body.dark-mode .contact-btn {
+    background:
+        #202832;
+
+    color:
+        #ffffff;
+
+    border:
+        1px solid #39424e;
+}
+
+body.dark-mode .contact-btn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #ff6d00,
+            #ff9800
+        );
+
+    border-color:
+        #ff9800;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+body.dark-mode footer {
+    background:
+        #080b0f;
+
+    color:
+        #aeb6c2;
+
+    border-top:
+        2px solid #ff9800;
+}
+
+body.dark-mode footer span {
+    color:
+        #ffd54f;
+}
+
+
+/* =========================================================
+   SCROLL TOP
+   ========================================================= */
+
+body.dark-mode #scroll-top {
+    background:
+        linear-gradient(
+            135deg,
+            #ff6d00,
+            #ffca28
+        );
+
+    color:
+        #111111;
+
+    box-shadow:
+        0 8px 25px rgba(255, 152, 0, 0.3);
+}
 
 /* =========================================================
    19. ANIMATIONS
