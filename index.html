@@ -244,86 +244,236 @@
     </a>
 
 </div>
-</section>
+<section id="contact">
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <div class="contact-heading">
 
-    <h2>Contact Me</h2>
+        <p class="section-tag">✦ GET IN TOUCH ✦</p>
 
-    <p>
-        Have a project or question? Send me a message.
-    </p>
-<div class="contact-links">
+        <h2>Let's Connect</h2>
 
-    <a
-        href="mailto:cscahulana@gmail.com"
-        class="contact-btn"
-    >
-        📧 Email Me
-    </a>
+        <p class="contact-subtitle">
+            Have a project, idea or question?
+            I'd love to hear from you.
+        </p>
 
-    <a
-        href="https://wa.me/918814867940"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="contact-btn"
-    >
-        💬 WhatsApp
-    </a>
+    </div>
 
-</div>
-    <form id="contact-form">
 
-        <div class="form-group">
-            <label for="name">Name</label>
+    <div class="contact-container">
 
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-            >
 
-            <small class="error-message" id="name-error"></small>
+        <!-- LEFT SIDE -->
+
+        <div class="contact-info">
+
+            <div class="contact-info-card">
+
+                <div class="contact-icon">
+                    📧
+                </div>
+
+                <div>
+                    <h3>Email</h3>
+
+                    <a href="mailto:cscahulana@gmail.com">
+                        cscahulana@gmail.com
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="contact-info-card">
+
+                <div class="contact-icon">
+                    💬
+                </div>
+
+                <div>
+                    <h3>WhatsApp</h3>
+
+                    <a
+                        href="https://wa.me/918814867940"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Chat with me
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="contact-info-card">
+
+                <div class="contact-icon">
+                    📍
+                </div>
+
+                <div>
+                    <h3>Location</h3>
+
+                    <p>Haryana, India</p>
+                </div>
+
+            </div>
+
+
+            <div class="contact-availability">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Available for projects</strong>
+
+                    <p>
+                        I'm open to web development
+                        opportunities and freelance projects.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
 
 
-        <div class="form-group">
-            <label for="email">Email</label>
+        <!-- RIGHT SIDE -->
 
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-            >
+        <div class="contact-form-card">
 
-            <small class="error-message" id="email-error"></small>
+            <form id="contact-form">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                        >
+
+                    </div>
+
+                    <span
+                        id="name-error"
+                        class="error-message"
+                    ></span>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉️
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+                    <span
+                        id="email-error"
+                        class="error-message"
+                    ></span>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-group">
+
+                    <div class="message-label">
+
+                        <label for="message">
+                            Your Message
+                        </label>
+
+                        <span id="message-count">
+                            0 / 500
+                        </span>
+
+                    </div>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="6"
+                        maxlength="500"
+                        placeholder="Write your message..."
+                    ></textarea>
+
+                    <span
+                        id="message-error"
+                        class="error-message"
+                    ></span>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    id="contact-submit"
+                >
+
+                    <span id="submit-text">
+                        🚀 Send Message
+                    </span>
+
+                    <span
+                        id="submit-loader"
+                        class="submit-loader"
+                    >
+                        Sending...
+                    </span>
+
+                </button>
+
+
+                <!-- SUCCESS -->
+
+                <div
+                    id="form-success"
+                    class="form-success"
+                ></div>
+
+            </form>
+
         </div>
 
-
-        <div class="form-group">
-            <label for="message">Message</label>
-
-            <textarea
-                id="message"
-                name="message"
-                rows="6"
-                placeholder="Write your message"
-            ></textarea>
-
-            <small class="error-message" id="message-error"></small>
-        </div>
-
-
-        <button type="submit">
-            Send Message
-        </button>
-
-        <p id="form-success"></p>
-
-    </form>
+    </div>
 
 </section>
 

@@ -150,67 +150,114 @@ window.addEventListener("scroll", function () {
    Contact Form Validation
 ========================= */
 
-const contactForm =
-    document.querySelector("#contact-form");
+/* =========================================================
+   PREMIUM CONTACT FORM
+   ========================================================= */
 
-const nameInput =
-    document.querySelector("#name");
+const contactForm = document.querySelector("#contact-form");
 
-const emailInput =
-    document.querySelector("#email");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const messageInput = document.querySelector("#message");
 
-const messageInput =
-    document.querySelector("#message");
+const nameError = document.querySelector("#name-error");
+const emailError = document.querySelector("#email-error");
+const messageError = document.querySelector("#message-error");
 
+const messageCount = document.querySelector("#message-count");
 
-const nameError =
-    document.querySelector("#name-error");
-
-const emailError =
-    document.querySelector("#email-error");
-
-const messageError =
-    document.querySelector("#message-error");
+const submitButton = document.querySelector("#contact-submit");
+const formSuccess = document.querySelector("#form-success");
 
 
-const formSuccess =
-    document.querySelector("#form-success");
+/* =========================================================
+   MESSAGE CHARACTER COUNTER
+   ========================================================= */
 
+if (messageInput && messageCount) {
+
+    messageInput.addEventListener("input", function () {
+
+        const currentLength = messageInput.value.length;
+
+        messageCount.textContent =
+            `${currentLength} / 500`;
+
+        if (currentLength >= 450) {
+
+            messageCount.style.color = "#e65100";
+
+        } else {
+
+            messageCount.style.color = "";
+        }
+
+    });
+}
+
+
+/* =========================================================
+   EMAIL VALIDATION
+   ========================================================= */
+
+function isValidEmail(email) {
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return emailPattern.test(email);
+}
+
+
+/* =========================================================
+   CLEAR ERRORS
+   ========================================================= */
+
+function clearFormErrors() {
+
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+
+    nameError.classList.remove("form-error");
+    emailError.classList.remove("form-error");
+    messageError.classList.remove("form-error");
+
+    formSuccess.textContent = "";
+    formSuccess.classList.remove("show");
+}
+
+
+/* =========================================================
+   FORM SUBMIT
+   ========================================================= */
 
 contactForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-
-    /* Clear old messages */
-
-    nameError.textContent = "";
-
-    emailError.textContent = "";
-
-    messageError.textContent = "";
-
-    formSuccess.textContent = "";
-
+    clearFormErrors();
 
     let isValid = true;
 
 
-    /* Remove previous error classes */
+    /* ---------- NAME ---------- */
 
-    nameError.classList.remove("form-error");
+    const name = nameInput.value.trim();
 
-    emailError.classList.remove("form-error");
-
-    messageError.classList.remove("form-error");
-
-
-    /* Name validation */
-
-    if (nameInput.value.trim() === "") {
+    if (name === "") {
 
         nameError.textContent =
-            "Please enter your name";
+            "Please enter your name.";
+
+        nameError.classList.add("form-error");
+
+        isValid = false;
+
+    } else if (name.length < 2) {
+
+        nameError.textContent =
+            "Name must contain at least 2 characters.";
 
         nameError.classList.add("form-error");
 
@@ -218,21 +265,23 @@ contactForm.addEventListener("submit", function (event) {
     }
 
 
-    /* Email validation */
+    /* ---------- EMAIL ---------- */
 
-    if (emailInput.value.trim() === "") {
+    const email = emailInput.value.trim();
+
+    if (email === "") {
 
         emailError.textContent =
-            "Please enter your email";
+            "Please enter your email.";
 
         emailError.classList.add("form-error");
 
         isValid = false;
 
-    } else if (!emailInput.value.includes("@")) {
+    } else if (!isValidEmail(email)) {
 
         emailError.textContent =
-            "Please enter a valid email";
+            "Please enter a valid email address.";
 
         emailError.classList.add("form-error");
 
@@ -240,12 +289,23 @@ contactForm.addEventListener("submit", function (event) {
     }
 
 
-    /* Message validation */
+    /* ---------- MESSAGE ---------- */
 
-    if (messageInput.value.trim() === "") {
+    const message = messageInput.value.trim();
+
+    if (message === "") {
 
         messageError.textContent =
-            "Please enter your message";
+            "Please enter your message.";
+
+        messageError.classList.add("form-error");
+
+        isValid = false;
+
+    } else if (message.length < 10) {
+
+        messageError.textContent =
+            "Message must contain at least 10 characters.";
 
         messageError.classList.add("form-error");
 
@@ -253,21 +313,70 @@ contactForm.addEventListener("submit", function (event) {
     }
 
 
-    /* Success */
+    /* ---------- STOP IF INVALID ---------- */
 
-    if (isValid) {
+    if (!isValid) {
 
-        formSuccess.textContent =
-            "Message validated successfully!";
-
-        formSuccess.style.color = "green";
-
-        contactForm.reset();
+        return;
     }
 
+
+    /* =====================================================
+       LOADING STATE
+       ===================================================== */
+
+    submitButton.disabled = true;
+
+    submitButton.classList.add("loading");
+
+
+    /* =====================================================
+       DEMO SEND DELAY
+       ===================================================== */
+
+    setTimeout(function () {
+
+        submitButton.disabled = false;
+
+        submitButton.classList.remove("loading");
+
+
+        /* ---------- SUCCESS ---------- */
+
+        formSuccess.textContent =
+            "✅ Your message has been validated successfully!";
+
+        formSuccess.classList.add("show");
+
+
+        /* ---------- RESET FORM ---------- */
+
+        contactForm.reset();
+
+
+        /* ---------- RESET COUNTER ---------- */
+
+        if (messageCount) {
+
+            messageCount.textContent =
+                "0 / 500";
+
+            messageCount.style.color = "";
+        }
+
+
+        /* ---------- HIDE SUCCESS ---------- */
+
+        setTimeout(function () {
+
+            formSuccess.classList.remove("show");
+
+        }, 5000);
+
+
+    }, 1200);
+
 });
-
-
 /* =========================
    Scroll To Top
 ========================= */
