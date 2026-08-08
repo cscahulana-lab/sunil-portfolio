@@ -146,28 +146,31 @@ window.addEventListener("scroll", function () {
 });
 
 
-/* =========================
-   Contact Form Validation
-========================= */
-
 /* =========================================================
-   PREMIUM CONTACT FORM
+   WHATSAPP CONTACT FORM
    ========================================================= */
 
 const contactForm = document.querySelector("#contact-form");
 
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
+const whatsappInput = document.querySelector("#whatsapp");
 const messageInput = document.querySelector("#message");
 
 const nameError = document.querySelector("#name-error");
 const emailError = document.querySelector("#email-error");
+const whatsappError = document.querySelector("#whatsapp-error");
 const messageError = document.querySelector("#message-error");
 
 const messageCount = document.querySelector("#message-count");
 
 const submitButton = document.querySelector("#contact-submit");
 const formSuccess = document.querySelector("#form-success");
+
+
+/* Your WhatsApp number */
+
+const whatsappNumber = "918814867940";
 
 
 /* =========================================================
@@ -193,6 +196,7 @@ if (messageInput && messageCount) {
         }
 
     });
+
 }
 
 
@@ -217,10 +221,12 @@ function clearFormErrors() {
 
     nameError.textContent = "";
     emailError.textContent = "";
+    whatsappError.textContent = "";
     messageError.textContent = "";
 
     nameError.classList.remove("form-error");
     emailError.classList.remove("form-error");
+    whatsappError.classList.remove("form-error");
     messageError.classList.remove("form-error");
 
     formSuccess.textContent = "";
@@ -289,6 +295,33 @@ contactForm.addEventListener("submit", function (event) {
     }
 
 
+    /* ---------- CUSTOMER WHATSAPP ---------- */
+
+    const customerWhatsapp =
+        whatsappInput.value
+            .trim()
+            .replace(/\D/g, "");
+
+    if (customerWhatsapp === "") {
+
+        whatsappError.textContent =
+            "Please enter your WhatsApp number.";
+
+        whatsappError.classList.add("form-error");
+
+        isValid = false;
+
+    } else if (customerWhatsapp.length !== 10) {
+
+        whatsappError.textContent =
+            "Please enter a valid 10-digit WhatsApp number.";
+
+        whatsappError.classList.add("form-error");
+
+        isValid = false;
+    }
+
+
     /* ---------- MESSAGE ---------- */
 
     const message = messageInput.value.trim();
@@ -316,13 +349,12 @@ contactForm.addEventListener("submit", function (event) {
     /* ---------- STOP IF INVALID ---------- */
 
     if (!isValid) {
-
         return;
     }
 
 
     /* =====================================================
-       LOADING STATE
+       LOADING
        ===================================================== */
 
     submitButton.disabled = true;
@@ -331,7 +363,55 @@ contactForm.addEventListener("submit", function (event) {
 
 
     /* =====================================================
-       DEMO SEND DELAY
+       CUSTOMER WHATSAPP LINK
+       ===================================================== */
+
+    const customerWhatsappLink =
+        `https://wa.me/91${customerWhatsapp}`;
+
+
+    /* =====================================================
+       MESSAGE TO YOUR WHATSAPP
+       ===================================================== */
+
+    const whatsappMessage =
+`Hello Sunil,
+
+I want to contact you through your portfolio.
+
+👤 CUSTOMER DETAILS
+-------------------------
+
+Name: ${name}
+
+Email: ${email}
+
+WhatsApp: +91 ${customerWhatsapp}
+
+📱 Direct WhatsApp:
+${customerWhatsappLink}
+
+💬 MESSAGE
+-------------------------
+
+${message}
+
+-------------------------
+Sent from Sunil Portfolio`;
+
+
+    /* =====================================================
+       YOUR WHATSAPP URL
+       ===================================================== */
+
+    const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+            whatsappMessage
+        )}`;
+
+
+    /* =====================================================
+       OPEN YOUR WHATSAPP
        ===================================================== */
 
     setTimeout(function () {
@@ -341,28 +421,28 @@ contactForm.addEventListener("submit", function (event) {
         submitButton.classList.remove("loading");
 
 
+        window.open(
+            whatsappURL,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+
         /* ---------- SUCCESS ---------- */
 
         formSuccess.textContent =
-            "✅ Your message has been validated successfully!";
+            "✅ WhatsApp is opening with the customer details.";
 
         formSuccess.classList.add("show");
 
 
-        /* ---------- RESET FORM ---------- */
+        /* ---------- RESET ---------- */
 
         contactForm.reset();
 
+        messageCount.textContent = "0 / 500";
 
-        /* ---------- RESET COUNTER ---------- */
-
-        if (messageCount) {
-
-            messageCount.textContent =
-                "0 / 500";
-
-            messageCount.style.color = "";
-        }
+        messageCount.style.color = "";
 
 
         /* ---------- HIDE SUCCESS ---------- */
@@ -373,8 +453,7 @@ contactForm.addEventListener("submit", function (event) {
 
         }, 5000);
 
-
-    }, 1200);
+    }, 700);
 
 });
 /* =========================
