@@ -91,7 +91,9 @@ section {
 
     background: #f4f4f4;
 }
-
+.project-btn + .project-btn {
+    margin-top: 10px;
+}
 
 /* Hero Content */
 
