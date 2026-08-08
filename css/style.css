@@ -1705,6 +1705,55 @@ body.dark-mode #scroll-top {
     box-shadow:
         0 8px 25px rgba(255, 152, 0, 0.3);
 }
+/* =========================================================
+   DARK MODE FINAL POLISH
+   ========================================================= */
+
+body.dark-mode #home {
+    background:
+        radial-gradient(
+            circle at 78% 35%,
+            rgba(255, 152, 0, 0.09),
+            transparent 28%
+        ),
+        #0d1117;
+}
+
+body.dark-mode .hero-image img {
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.65),
+        0 0 18px rgba(255, 152, 0, 0.15);
+}
+
+body.dark-mode #about,
+body.dark-mode #projects {
+    background: #10151c;
+}
+
+body.dark-mode #skills,
+body.dark-mode #contact {
+    background: #0d1117;
+}
+
+body.dark-mode .project-card p,
+body.dark-mode #about p,
+body.dark-mode .hero-description {
+    color: #c2c9d2;
+}
+
+body.dark-mode .project-card {
+    background:
+        linear-gradient(
+            145deg,
+            #171d25,
+            #12171e
+        );
+}
+
+body.dark-mode .skills-container,
+body.dark-mode #contact-form {
+    background: #151b23;
+}
 
 /* =========================================================
    19. ANIMATIONS
